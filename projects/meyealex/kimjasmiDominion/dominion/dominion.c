@@ -1100,7 +1100,8 @@ int adventurer_card(struct gameState *state)
   int z = 0;	// this is the counter for the temp hand
 
   //Bug #1 : Player will reveal cards from deck until 1 Treasure card is revealed (normally 2 Treasure cards)
-  while(drawntreasure<1){
+  //BUG FIXED by meyealex
+  while(drawntreasure<2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
@@ -1128,8 +1129,9 @@ int smithy_card(struct gameState *state, int handPos)
 	int currentPlayer = whoseTurn(state);
 	int i;
 
-      //Bug #2 : Player will draw 4 cards rather than the original 3 cards 
-      for (i = 0; i < 4; i++)
+      //Bug #2 : Player will draw 4 cards rather than the original 3 cards
+      //FIXED by meyealex
+      for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
